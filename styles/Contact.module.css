@@ -1,15 +1,74 @@
-.container{
-    max-width:45vw;
-    margin:auto;
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.mb3{
-    margin-bottom: 22px;
 
+/* Heading styling */
+.container h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
 }
-.formlabel{
-    margin: 0px 34px;
-    background-color: black;
+
+/* Margin-bottom for form groups */
+.mb3 {
+    margin-bottom: 20px;
 }
-.input{
+
+/* Label styling */
+.formlabel {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+/* Input and textarea styling */
+.input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #eaf7f8;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+/* Input focus effect */
+.input:focus {
+    border-color: rgb(23, 198, 204);
+    outline: none;
+}
+
+/* Help text styling */
+.formtext {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 4px;
+}
+
+/* Submit button styling */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
     background-color: rgb(23, 198, 204);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1aa0a5;
 }
