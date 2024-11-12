@@ -45,10 +45,10 @@ const blog = (props) => {
   );
 };
 export async function getServerSideProps(context) {
-  let data = await fetch('https://hunting-coder-phi.vercel.app/api/blogs')
+  let data = await fetch(`${process.env.CONNECTION_URL}/api/blogs`)
   let allBlogs =await data.json()
   return {
-    props: { allBlogs }, // will be passed to the page component as props
+    props: { allBlogs }// will be passed to the page component as props
   }
 }
 export default blog;

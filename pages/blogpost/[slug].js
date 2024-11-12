@@ -27,8 +27,8 @@ const slug = (props) => {
 }
 export async function getServerSideProps(context) {
    const {slug} = context.query;
-   let data  = await fetch(`https://hunting-coder-phi.vercel.app/api/getblog?slug=${slug}`)
    //let data  = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
+   let data  = await fetch(`${process.env.CONNECTION_URL}/api/getblog?slug=${slug}`)
    let myBlog = await data.json()
   return {
     props: { myBlog }, // will be passed to the page component as props

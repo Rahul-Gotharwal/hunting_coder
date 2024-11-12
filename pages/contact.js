@@ -11,7 +11,7 @@ const Contact = () => {
   e.preventDefault()
   const data = {phone, name, email, desc};
 
-  fetch('https://hunting-coder-phi.vercel.app/api/postcontact', {
+  fetch(`${process.env.CONNECTION_URL}/api/postcontact`, {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
