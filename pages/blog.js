@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 const blog = (props) => {
-  console.log(props)
+  //console.log(props)
   const [blogs, setblogs] = useState(props.allBlogs);
-  console.log(props)
+//console.log(props)
   // useEffect(()=>{
   
   // },[])
@@ -45,10 +45,18 @@ const blog = (props) => {
   );
 };
 export async function getServerSideProps(context) {
-  let data = await fetch(`${process.env.CONNECTION_URL}/api/blogs`)
-  let allBlogs =await data.json()
-  return {
-    props: { allBlogs }// will be passed to the page component as props
+  try {
+    let data = await fetch(`${process.env.CONNECTION_URL}/api/blogs`);
+    if (!data.ok) {
+     // console.error("Failed to fetch data:", data.statusText);
+      return { props: { allBlogs: [] } };
+    }
+    let allBlogs = await data.json();
+    return { props: { allBlogs } };
+  } catch (error) {
+  //  console.error("Error fetching blogs:", error);
+    return { props: { allBlogs: [] } };
   }
 }
+
 export default blog;

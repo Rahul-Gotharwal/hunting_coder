@@ -1,13 +1,20 @@
-import * as fs from 'fs';
+import fs from 'fs/promises';
 
 export default async function handler(req, res) {
-    let data = await fs.promises.readdir("blogdata");
-    let myfile; 
-    let allBlogs = []
-      for (let index = 0; index < data.length; index++) {
-        const item = data[index]; 
-          myfile = await fs.promises.readFile(('blogdata/' + item), 'utf-8') 
-          allBlogs.push(JSON.parse(myfile))
-      }
-    res.status(200).json(allBlogs)
+  try {
+    const files = await fs.readdir('blogdata');
+
+    const allBlogs = await Promise.all(
+      files.map(async (file) => {
+        const filePath = `blogdata/${file}`;
+        const fileContent = await fs.readFile(filePath, 'utf-8');
+        return JSON.parse(fileContent);
+      })
+    );
+
+    res.status(200).json(allBlogs);
+  } catch (error) {
+    console.error('Error reading blog data:', error);
+    res.status(500).json({ error: 'Failed to fetch blog data' });
+  }
 }
